@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D27968FE20258A4E002E1884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D27968FD20258A4E002E1884 /* AppDelegate.m */; };
+		D279690120258A4E002E1884 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D279690020258A4E002E1884 /* ViewController.m */; };
+		D279690420258A4E002E1884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D279690220258A4E002E1884 /* Main.storyboard */; };
+		D279690620258A4E002E1884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D279690520258A4E002E1884 /* Assets.xcassets */; };
+		D279690920258A4E002E1884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D279690720258A4E002E1884 /* LaunchScreen.storyboard */; };
+		D279690C20258A4E002E1884 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D279690B20258A4E002E1884 /* main.m */; };
+		D279691620258A4E002E1884 /* NewsScrollbarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D279691520258A4E002E1884 /* NewsScrollbarTests.m */; };
+		D279692120258A4E002E1884 /* NewsScrollbarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D279692020258A4E002E1884 /* NewsScrollbarUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D279691220258A4E002E1884 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D27968F120258A4E002E1884 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D27968F820258A4E002E1884;
+			remoteInfo = NewsScrollbar;
+		};
+		D279691D20258A4E002E1884 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D27968F120258A4E002E1884 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D27968F820258A4E002E1884;
+			remoteInfo = NewsScrollbar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D27968F920258A4E002E1884 /* NewsScrollbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsScrollbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D27968FC20258A4E002E1884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D27968FD20258A4E002E1884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D27968FF20258A4E002E1884 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D279690020258A4E002E1884 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D279690320258A4E002E1884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D279690520258A4E002E1884 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D279690820258A4E002E1884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D279690A20258A4E002E1884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D279690B20258A4E002E1884 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D279691120258A4E002E1884 /* NewsScrollbarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsScrollbarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D279691520258A4E002E1884 /* NewsScrollbarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsScrollbarTests.m; sourceTree = "<group>"; };
+		D279691720258A4E002E1884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D279691C20258A4E002E1884 /* NewsScrollbarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsScrollbarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D279692020258A4E002E1884 /* NewsScrollbarUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsScrollbarUITests.m; sourceTree = "<group>"; };
+		D279692220258A4E002E1884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D27968F620258A4E002E1884 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D279690E20258A4E002E1884 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D279691920258A4E002E1884 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D27968F020258A4E002E1884 = {
+			isa = PBXGroup;
+			children = (
+				D27968FB20258A4E002E1884 /* NewsScrollbar */,
+				D279691420258A4E002E1884 /* NewsScrollbarTests */,
+				D279691F20258A4E002E1884 /* NewsScrollbarUITests */,
+				D27968FA20258A4E002E1884 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D27968FA20258A4E002E1884 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D27968F920258A4E002E1884 /* NewsScrollbar.app */,
+				D279691120258A4E002E1884 /* NewsScrollbarTests.xctest */,
+				D279691C20258A4E002E1884 /* NewsScrollbarUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D27968FB20258A4E002E1884 /* NewsScrollbar */ = {
+			isa = PBXGroup;
+			children = (
+				D27968FC20258A4E002E1884 /* AppDelegate.h */,
+				D27968FD20258A4E002E1884 /* AppDelegate.m */,
+				D27968FF20258A4E002E1884 /* ViewController.h */,
+				D279690020258A4E002E1884 /* ViewController.m */,
+				D279690220258A4E002E1884 /* Main.storyboard */,
+				D279690520258A4E002E1884 /* Assets.xcassets */,
+				D279690720258A4E002E1884 /* LaunchScreen.storyboard */,
+				D279690A20258A4E002E1884 /* Info.plist */,
+				D279690B20258A4E002E1884 /* main.m */,
+			);
+			path = NewsScrollbar;
+			sourceTree = "<group>";
+		};
+		D279691420258A4E002E1884 /* NewsScrollbarTests */ = {
+			isa = PBXGroup;
+			children = (
+				D279691520258A4E002E1884 /* NewsScrollbarTests.m */,
+				D279691720258A4E002E1884 /* Info.plist */,
+			);
+			path = NewsScrollbarTests;
+			sourceTree = "<group>";
+		};
+		D279691F20258A4E002E1884 /* NewsScrollbarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D279692020258A4E002E1884 /* NewsScrollbarUITests.m */,
+				D279692220258A4E002E1884 /* Info.plist */,
+			);
+			path = NewsScrollbarUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D27968F820258A4E002E1884 /* NewsScrollbar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D279692520258A4E002E1884 /* Build configuration list for PBXNativeTarget "NewsScrollbar" */;
+			buildPhases = (
+				D27968F520258A4E002E1884 /* Sources */,
+				D27968F620258A4E002E1884 /* Frameworks */,
+				D27968F720258A4E002E1884 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NewsScrollbar;
+			productName = NewsScrollbar;
+			productReference = D27968F920258A4E002E1884 /* NewsScrollbar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D279691020258A4E002E1884 /* NewsScrollbarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D279692820258A4E002E1884 /* Build configuration list for PBXNativeTarget "NewsScrollbarTests" */;
+			buildPhases = (
+				D279690D20258A4E002E1884 /* Sources */,
+				D279690E20258A4E002E1884 /* Frameworks */,
+				D279690F20258A4E002E1884 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D279691320258A4E002E1884 /* PBXTargetDependency */,
+			);
+			name = NewsScrollbarTests;
+			productName = NewsScrollbarTests;
+			productReference = D279691120258A4E002E1884 /* NewsScrollbarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D279691B20258A4E002E1884 /* NewsScrollbarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D279692B20258A4E002E1884 /* Build configuration list for PBXNativeTarget "NewsScrollbarUITests" */;
+			buildPhases = (
+				D279691820258A4E002E1884 /* Sources */,
+				D279691920258A4E002E1884 /* Frameworks */,
+				D279691A20258A4E002E1884 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D279691E20258A4E002E1884 /* PBXTargetDependency */,
+			);
+			name = NewsScrollbarUITests;
+			productName = NewsScrollbarUITests;
+			productReference = D279691C20258A4E002E1884 /* NewsScrollbarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D27968F120258A4E002E1884 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "杜文亮";
+				TargetAttributes = {
+					D27968F820258A4E002E1884 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					D279691020258A4E002E1884 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D27968F820258A4E002E1884;
+					};
+					D279691B20258A4E002E1884 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D27968F820258A4E002E1884;
+					};
+				};
+			};
+			buildConfigurationList = D27968F420258A4E002E1884 /* Build configuration list for PBXProject "NewsScrollbar" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D27968F020258A4E002E1884;
+			productRefGroup = D27968FA20258A4E002E1884 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D27968F820258A4E002E1884 /* NewsScrollbar */,
+				D279691020258A4E002E1884 /* NewsScrollbarTests */,
+				D279691B20258A4E002E1884 /* NewsScrollbarUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D27968F720258A4E002E1884 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D279690920258A4E002E1884 /* LaunchScreen.storyboard in Resources */,
+				D279690620258A4E002E1884 /* Assets.xcassets in Resources */,
+				D279690420258A4E002E1884 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D279690F20258A4E002E1884 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D279691A20258A4E002E1884 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D27968F520258A4E002E1884 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D279690120258A4E002E1884 /* ViewController.m in Sources */,
+				D279690C20258A4E002E1884 /* main.m in Sources */,
+				D27968FE20258A4E002E1884 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D279690D20258A4E002E1884 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D279691620258A4E002E1884 /* NewsScrollbarTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D279691820258A4E002E1884 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D279692120258A4E002E1884 /* NewsScrollbarUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D279691320258A4E002E1884 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D27968F820258A4E002E1884 /* NewsScrollbar */;
+			targetProxy = D279691220258A4E002E1884 /* PBXContainerItemProxy */;
+		};
+		D279691E20258A4E002E1884 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D27968F820258A4E002E1884 /* NewsScrollbar */;
+			targetProxy = D279691D20258A4E002E1884 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D279690220258A4E002E1884 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D279690320258A4E002E1884 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D279690720258A4E002E1884 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D279690820258A4E002E1884 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D279692320258A4E002E1884 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D279692420258A4E002E1884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D279692620258A4E002E1884 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NewsScrollbar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.du.NewsScrollbar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D279692720258A4E002E1884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NewsScrollbar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.du.NewsScrollbar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D279692920258A4E002E1884 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NewsScrollbarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.du.NewsScrollbarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewsScrollbar.app/NewsScrollbar";
+			};
+			name = Debug;
+		};
+		D279692A20258A4E002E1884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NewsScrollbarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.du.NewsScrollbarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewsScrollbar.app/NewsScrollbar";
+			};
+			name = Release;
+		};
+		D279692C20258A4E002E1884 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NewsScrollbarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.du.NewsScrollbarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NewsScrollbar;
+			};
+			name = Debug;
+		};
+		D279692D20258A4E002E1884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NewsScrollbarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.du.NewsScrollbarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NewsScrollbar;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D27968F420258A4E002E1884 /* Build configuration list for PBXProject "NewsScrollbar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D279692320258A4E002E1884 /* Debug */,
+				D279692420258A4E002E1884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D279692520258A4E002E1884 /* Build configuration list for PBXNativeTarget "NewsScrollbar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D279692620258A4E002E1884 /* Debug */,
+				D279692720258A4E002E1884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D279692820258A4E002E1884 /* Build configuration list for PBXNativeTarget "NewsScrollbarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D279692920258A4E002E1884 /* Debug */,
+				D279692A20258A4E002E1884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D279692B20258A4E002E1884 /* Build configuration list for PBXNativeTarget "NewsScrollbarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D279692C20258A4E002E1884 /* Debug */,
+				D279692D20258A4E002E1884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D27968F120258A4E002E1884 /* Project object */;
+}
