@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		D27968FE20258A4E002E1884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D27968FD20258A4E002E1884 /* AppDelegate.m */; };
-		D279690120258A4E002E1884 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D279690020258A4E002E1884 /* ViewController.m */; };
+		D279690120258A4E002E1884 /* SPNewsScrollVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D279690020258A4E002E1884 /* SPNewsScrollVC.m */; };
 		D279690420258A4E002E1884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D279690220258A4E002E1884 /* Main.storyboard */; };
 		D279690620258A4E002E1884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D279690520258A4E002E1884 /* Assets.xcassets */; };
 		D279690920258A4E002E1884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D279690720258A4E002E1884 /* LaunchScreen.storyboard */; };
 		D279690C20258A4E002E1884 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D279690B20258A4E002E1884 /* main.m */; };
 		D279691620258A4E002E1884 /* NewsScrollbarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D279691520258A4E002E1884 /* NewsScrollbarTests.m */; };
 		D279692120258A4E002E1884 /* NewsScrollbarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D279692020258A4E002E1884 /* NewsScrollbarUITests.m */; };
+		D27969312025908D002E1884 /* TabVC1.m in Sources */ = {isa = PBXBuildFile; fileRef = D27969302025908D002E1884 /* TabVC1.m */; };
+		D27969342025950D002E1884 /* TabVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = D27969332025950D002E1884 /* TabVC2.m */; };
+		D279693A202A9712002E1884 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2796939202A9712002E1884 /* ViewController.m */; };
+		D279693D202AA2D5002E1884 /* SameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D279693C202AA2D5002E1884 /* SameVC.m */; };
+		D2796940202AC555002E1884 /* ParameterMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D279693F202AC555002E1884 /* ParameterMode.m */; };
+		D2796949202AF1F5002E1884 /* SSNewsScrollVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2796948202AF1F5002E1884 /* SSNewsScrollVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +44,8 @@
 		D27968F920258A4E002E1884 /* NewsScrollbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsScrollbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27968FC20258A4E002E1884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D27968FD20258A4E002E1884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D27968FF20258A4E002E1884 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D279690020258A4E002E1884 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D27968FF20258A4E002E1884 /* SPNewsScrollVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPNewsScrollVC.h; sourceTree = "<group>"; };
+		D279690020258A4E002E1884 /* SPNewsScrollVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPNewsScrollVC.m; sourceTree = "<group>"; };
 		D279690320258A4E002E1884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D279690520258A4E002E1884 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D279690820258A4E002E1884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +57,19 @@
 		D279691C20258A4E002E1884 /* NewsScrollbarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsScrollbarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D279692020258A4E002E1884 /* NewsScrollbarUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsScrollbarUITests.m; sourceTree = "<group>"; };
 		D279692220258A4E002E1884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D279692F2025908D002E1884 /* TabVC1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabVC1.h; sourceTree = "<group>"; };
+		D27969302025908D002E1884 /* TabVC1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabVC1.m; sourceTree = "<group>"; };
+		D27969322025950D002E1884 /* TabVC2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabVC2.h; sourceTree = "<group>"; };
+		D27969332025950D002E1884 /* TabVC2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabVC2.m; sourceTree = "<group>"; };
+		D2796938202A9712002E1884 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D2796939202A9712002E1884 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D279693B202AA2D5002E1884 /* SameVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SameVC.h; sourceTree = "<group>"; };
+		D279693C202AA2D5002E1884 /* SameVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SameVC.m; sourceTree = "<group>"; };
+		D279693E202AC555002E1884 /* ParameterMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParameterMode.h; sourceTree = "<group>"; };
+		D279693F202AC555002E1884 /* ParameterMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParameterMode.m; sourceTree = "<group>"; };
+		D2796942202AD092002E1884 /* MacroDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
+		D2796947202AF1F5002E1884 /* SSNewsScrollVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSNewsScrollVC.h; sourceTree = "<group>"; };
+		D2796948202AF1F5002E1884 /* SSNewsScrollVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSNewsScrollVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,15 +120,13 @@
 		D27968FB20258A4E002E1884 /* NewsScrollbar */ = {
 			isa = PBXGroup;
 			children = (
-				D27968FC20258A4E002E1884 /* AppDelegate.h */,
-				D27968FD20258A4E002E1884 /* AppDelegate.m */,
-				D27968FF20258A4E002E1884 /* ViewController.h */,
-				D279690020258A4E002E1884 /* ViewController.m */,
-				D279690220258A4E002E1884 /* Main.storyboard */,
-				D279690520258A4E002E1884 /* Assets.xcassets */,
-				D279690720258A4E002E1884 /* LaunchScreen.storyboard */,
+				D2796938202A9712002E1884 /* ViewController.h */,
+				D2796939202A9712002E1884 /* ViewController.m */,
+				D2796945202AF1BB002E1884 /* SS */,
+				D2796944202AD1F3002E1884 /* SP */,
+				D2796943202AD1D5002E1884 /* ChildVCs */,
+				D279692E20258A58002E1884 /* Others */,
 				D279690A20258A4E002E1884 /* Info.plist */,
-				D279690B20258A4E002E1884 /* main.m */,
 			);
 			path = NewsScrollbar;
 			sourceTree = "<group>";
@@ -130,6 +147,53 @@
 				D279692220258A4E002E1884 /* Info.plist */,
 			);
 			path = NewsScrollbarUITests;
+			sourceTree = "<group>";
+		};
+		D279692E20258A58002E1884 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				D27968FC20258A4E002E1884 /* AppDelegate.h */,
+				D27968FD20258A4E002E1884 /* AppDelegate.m */,
+				D279690220258A4E002E1884 /* Main.storyboard */,
+				D279690520258A4E002E1884 /* Assets.xcassets */,
+				D279690720258A4E002E1884 /* LaunchScreen.storyboard */,
+				D279690B20258A4E002E1884 /* main.m */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		D2796943202AD1D5002E1884 /* ChildVCs */ = {
+			isa = PBXGroup;
+			children = (
+				D279692F2025908D002E1884 /* TabVC1.h */,
+				D27969302025908D002E1884 /* TabVC1.m */,
+				D27969322025950D002E1884 /* TabVC2.h */,
+				D27969332025950D002E1884 /* TabVC2.m */,
+				D279693B202AA2D5002E1884 /* SameVC.h */,
+				D279693C202AA2D5002E1884 /* SameVC.m */,
+			);
+			path = ChildVCs;
+			sourceTree = "<group>";
+		};
+		D2796944202AD1F3002E1884 /* SP */ = {
+			isa = PBXGroup;
+			children = (
+				D2796942202AD092002E1884 /* MacroDefinition.h */,
+				D279693E202AC555002E1884 /* ParameterMode.h */,
+				D279693F202AC555002E1884 /* ParameterMode.m */,
+				D27968FF20258A4E002E1884 /* SPNewsScrollVC.h */,
+				D279690020258A4E002E1884 /* SPNewsScrollVC.m */,
+			);
+			path = SP;
+			sourceTree = "<group>";
+		};
+		D2796945202AF1BB002E1884 /* SS */ = {
+			isa = PBXGroup;
+			children = (
+				D2796947202AF1F5002E1884 /* SSNewsScrollVC.h */,
+				D2796948202AF1F5002E1884 /* SSNewsScrollVC.m */,
+			);
+			path = SS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +329,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D279690120258A4E002E1884 /* ViewController.m in Sources */,
+				D2796940202AC555002E1884 /* ParameterMode.m in Sources */,
+				D279693A202A9712002E1884 /* ViewController.m in Sources */,
+				D279693D202AA2D5002E1884 /* SameVC.m in Sources */,
+				D27969312025908D002E1884 /* TabVC1.m in Sources */,
+				D2796949202AF1F5002E1884 /* SSNewsScrollVC.m in Sources */,
+				D279690120258A4E002E1884 /* SPNewsScrollVC.m in Sources */,
 				D279690C20258A4E002E1884 /* main.m in Sources */,
+				D27969342025950D002E1884 /* TabVC2.m in Sources */,
 				D27968FE20258A4E002E1884 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +502,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NewsScrollbar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.du.NewsScrollbar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,6 +516,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NewsScrollbar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.du.NewsScrollbar;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SameVC.h
 //  NewsScrollbar
 //
 //  Created by 杜文亮 on 2018/2/7.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface SameVC : UIViewController
 
 @end
