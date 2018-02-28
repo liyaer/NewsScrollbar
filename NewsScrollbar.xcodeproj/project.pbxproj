@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2464EC22043F37C0072B723 /* ScaleModeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2464EC12043F37C0072B723 /* ScaleModeVC.m */; };
+		D2464EC520463E400072B723 /* UIColor+RGB.m in Sources */ = {isa = PBXBuildFile; fileRef = D2464EC420463E400072B723 /* UIColor+RGB.m */; };
 		D27968FE20258A4E002E1884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D27968FD20258A4E002E1884 /* AppDelegate.m */; };
 		D279690120258A4E002E1884 /* SPNewsScrollVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D279690020258A4E002E1884 /* SPNewsScrollVC.m */; };
 		D279690420258A4E002E1884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D279690220258A4E002E1884 /* Main.storyboard */; };
@@ -41,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2464EC02043F37C0072B723 /* ScaleModeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScaleModeVC.h; sourceTree = "<group>"; };
+		D2464EC12043F37C0072B723 /* ScaleModeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScaleModeVC.m; sourceTree = "<group>"; };
+		D2464EC320463E400072B723 /* UIColor+RGB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGB.h"; sourceTree = "<group>"; };
+		D2464EC420463E400072B723 /* UIColor+RGB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGB.m"; sourceTree = "<group>"; };
 		D27968F920258A4E002E1884 /* NewsScrollbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsScrollbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27968FC20258A4E002E1884 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D27968FD20258A4E002E1884 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -190,8 +196,12 @@
 		D2796945202AF1BB002E1884 /* SS */ = {
 			isa = PBXGroup;
 			children = (
+				D2464EC320463E400072B723 /* UIColor+RGB.h */,
+				D2464EC420463E400072B723 /* UIColor+RGB.m */,
 				D2796947202AF1F5002E1884 /* SSNewsScrollVC.h */,
 				D2796948202AF1F5002E1884 /* SSNewsScrollVC.m */,
+				D2464EC02043F37C0072B723 /* ScaleModeVC.h */,
+				D2464EC12043F37C0072B723 /* ScaleModeVC.m */,
 			);
 			path = SS;
 			sourceTree = "<group>";
@@ -334,7 +344,9 @@
 				D279693D202AA2D5002E1884 /* SameVC.m in Sources */,
 				D27969312025908D002E1884 /* TabVC1.m in Sources */,
 				D2796949202AF1F5002E1884 /* SSNewsScrollVC.m in Sources */,
+				D2464EC520463E400072B723 /* UIColor+RGB.m in Sources */,
 				D279690120258A4E002E1884 /* SPNewsScrollVC.m in Sources */,
+				D2464EC22043F37C0072B723 /* ScaleModeVC.m in Sources */,
 				D279690C20258A4E002E1884 /* main.m in Sources */,
 				D27969342025950D002E1884 /* TabVC2.m in Sources */,
 				D27968FE20258A4E002E1884 /* AppDelegate.m in Sources */,

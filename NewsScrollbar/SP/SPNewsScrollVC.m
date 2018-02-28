@@ -38,7 +38,7 @@
         _pageVC.delegate = self;
         _pageVC.dataSource = self;
         //为PVC初始化子VC
-        [_pageVC setViewControllers:@[self.VCs.firstObject] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished)
+        [_pageVC setViewControllers:@[self.VCs.firstObject] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished)
          {
              NSLog(@"只打印一次！");
          }];
