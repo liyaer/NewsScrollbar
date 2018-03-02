@@ -19,6 +19,24 @@
 
 #import <UIKit/UIKit.h>
 
+/*
+    说明：
+        0，1是必选效果设置项，内置的两种默认效果，无需额外提供参数（是根据用户指定的选中、未选中颜色决定的）。
+        2，3，4是可选效果设置项，可以任选一种并且只能一种和上面1或2进行效果的叠加；如果设置了多项，那么只会展示默认的效果1或0。
+    注意：
+        如果标题长度差别较大，不建议使用缩放效果，会造成间距不等的效果；如果标题长度一样或者差别不大，可以使用这种效果
+ */
+typedef enum : NSUInteger
+{
+    titleColorSlideGradientMode,//0，标题颜色滑动渐变
+    titleColorGradientMode,//1，标题颜色渐变
+    scaleMode,//2，缩放效果
+    underLineMode,//3，下标选中效果
+    coverMode,//4，滑块选中效果
+}
+effectMode;
+
+
 @interface SSNewsScrollVC : UIViewController
 
 /*
@@ -31,10 +49,13 @@
         2，标题名称和控制器名称是必传字段，其他可以选传
  */
 
-//缩放效果（如果标题长度差别较大，不建议使用，会造成间距不等的效果；如果标题长度一样活着差别不大，可以使用这种效果）
--(void)setScaleModeParameter:(void(^)(NSArray **titles, CGFloat *title_space, UIFont **title_font, UIColor **title_bgColor, UIColor **title_sel_color, UIColor **title_deSel_color, CGFloat *title_scroll_h, UIColor **title_scroll_bgColor, NSArray **vcNames, NSInteger *selectIndex, CGFloat *scale)) titlesBlock;
+//通用参数的设置，包含默认效果的设置，从1，0中任选一种，必须调用！
+-(void)setBasicsParameter:(void(^)(NSArray **titles, CGFloat *title_space, UIFont **title_font, UIColor **title_bgColor, UIColor **title_sel_color, UIColor **title_deSel_color, CGFloat *title_scroll_h, UIColor **title_scroll_bgColor, NSArray **vcNames, NSInteger *selectIndex, effectMode *mode)) titlesBlock;
 
 //错误的写法，无法达到效果，必须传地址（或者叫引用、reference）才行
 //-(void)setScaleParameter:(void(^)(NSArray *titles)) titlesBlock;
+
+//可选效果的设置，选择性调用，但是只能从2，3，4中选一种调用！
+-(void)setOtherMode:(effectMode)mode parameter:(id)parameter;
 
 @end
