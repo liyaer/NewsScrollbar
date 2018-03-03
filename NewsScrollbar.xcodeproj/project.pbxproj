@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D206F8E02049319100ABCE01 /* TitleLab.m in Sources */ = {isa = PBXBuildFile; fileRef = D206F8DF2049319100ABCE01 /* TitleLab.m */; };
+		D206F8E3204A6CCF00ABCE01 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D206F8E2204A6CCF00ABCE01 /* LoadingView.m */; };
 		D2464EC22043F37C0072B723 /* ScaleModeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2464EC12043F37C0072B723 /* ScaleModeVC.m */; };
 		D2464EC520463E400072B723 /* UIColor+RGB.m in Sources */ = {isa = PBXBuildFile; fileRef = D2464EC420463E400072B723 /* UIColor+RGB.m */; };
 		D27968FE20258A4E002E1884 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D27968FD20258A4E002E1884 /* AppDelegate.m */; };
@@ -46,6 +47,8 @@
 /* Begin PBXFileReference section */
 		D206F8DE2049319100ABCE01 /* TitleLab.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleLab.h; sourceTree = "<group>"; };
 		D206F8DF2049319100ABCE01 /* TitleLab.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleLab.m; sourceTree = "<group>"; };
+		D206F8E1204A6CCF00ABCE01 /* LoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		D206F8E2204A6CCF00ABCE01 /* LoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		D2464EC02043F37C0072B723 /* ScaleModeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScaleModeVC.h; sourceTree = "<group>"; };
 		D2464EC12043F37C0072B723 /* ScaleModeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScaleModeVC.m; sourceTree = "<group>"; };
 		D2464EC320463E400072B723 /* UIColor+RGB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGB.h"; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				D2464EC420463E400072B723 /* UIColor+RGB.m */,
 				D206F8DE2049319100ABCE01 /* TitleLab.h */,
 				D206F8DF2049319100ABCE01 /* TitleLab.m */,
+				D206F8E1204A6CCF00ABCE01 /* LoadingView.h */,
+				D206F8E2204A6CCF00ABCE01 /* LoadingView.m */,
 				D2796947202AF1F5002E1884 /* SSNewsScrollVC.h */,
 				D2796948202AF1F5002E1884 /* SSNewsScrollVC.m */,
 				D2464EC02043F37C0072B723 /* ScaleModeVC.h */,
@@ -354,6 +359,7 @@
 				D206F8E02049319100ABCE01 /* TitleLab.m in Sources */,
 				D2464EC22043F37C0072B723 /* ScaleModeVC.m in Sources */,
 				D279690C20258A4E002E1884 /* main.m in Sources */,
+				D206F8E3204A6CCF00ABCE01 /* LoadingView.m in Sources */,
 				D27969342025950D002E1884 /* TabVC2.m in Sources */,
 				D27968FE20258A4E002E1884 /* AppDelegate.m in Sources */,
 			);

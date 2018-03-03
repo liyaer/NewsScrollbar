@@ -10,6 +10,7 @@
 #import "MacroDefinition.h"
 #import "UIColor+RGB.h"
 #import "TitleLab.h"
+#import "LoadingView.h"
 
 
 //cover效果时扩宽尺寸需要
@@ -73,25 +74,10 @@
     {
         _titleFrames = [NSMutableArray arrayWithCapacity:5];
         
-        //计算标题的长度，并设置titleLab的frame
-        CGFloat x = 0.0;
-        for (NSString *title in _titles)
-        {
-            CGRect title_rect = [title boundingRectWithSize:CGSizeMake(MAXFLOAT, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:_title_font} context:nil];
-            CGRect title_rect_N = [(NSValue *)_titleFrames.lastObject CGRectValue];
-            //x += title_rect_N.size.width + item_space;或者
-            x = CGRectGetMaxX(title_rect_N) + _title_space;
-            
-            [_titleFrames addObject:[NSValue valueWithCGRect:CGRectMake(x, 0, title_rect.size.width, _title_scroll_h)]];
-            
-            //记录字体的高度，cover方式需要此参数
-            static dispatch_once_t onceToken;
-            dispatch_once(&onceToken, ^
-            {
-                _title_h = title_rect.size.height;
-                NSLog(@"字体大小一致，高度只需设置一次即可！");
-            });
-        }
+        //向self.titleFrames中填充数据
+        [self fillTitleFrames];
+        //检查总长度是否小于屏幕宽度，小于的话重设title的frame，更新self.titleFrames
+        [self inspectTotalWidth];
     }
     return _titleFrames;
 }
@@ -165,6 +151,12 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    //取消导航控制器默认的滑动返回（正常返回的话没问题，若中途取消返回会crash，所以禁用）
+    if (self.navigationController)
+    {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
 }
 
 -(void)setAnimationGradientColor
@@ -359,8 +351,7 @@
 //滑动结束时会走这里（点击标签触发VC切换不走）
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    CGPoint offset = scrollView.contentOffset;
-    NSInteger currentPage = offset.x / dScreenWidth;
+    NSInteger currentPage = scrollView.contentOffset.x / dScreenWidth;
     
     //更新标识符。这里会存在切换成功和切换失败两种情况，无论那种情况都只需下面一句代码即可。切换成功触发KVO，切换失败不会触发，因为self.lastSelBtnTag前后值未变化
     self.lastSelBtnTag = currentPage +100;
@@ -378,6 +369,14 @@
     lastSelLab.textColor = _title_deSel_color;
     TitleLab *selLab = (TitleLab *)[self.titleScroll viewWithTag:tag];
     selLab.textColor = _title_sel_color;
+    //在titleColorSlideGradientMode模式下，如果之前进行过滑动切换，消除动画带来的影响
+    if (_mode == titleColorSlideGradientMode)
+    {
+        lastSelLab.fillColor = nil;
+        lastSelLab.progress = 0.0;
+        selLab.fillColor = nil;
+        selLab.progress = 0.0;
+    }
     
     //叠加效果的设置-----动画结束时
     [self setModesEndValue:lastSelLab selBtn:selLab];
@@ -472,6 +471,8 @@
 
 -(void)addTitleLabs
 {
+    __weak typeof(self) weakSelf = self;
+
     for (int i = 0; i < _titles.count; i++)
     {
         TitleLab *lab = [[TitleLab alloc] initWithFrame:[(NSValue *)self.titleFrames[i] CGRectValue]];
@@ -487,12 +488,53 @@
         }
         lab.titleClick = ^(NSInteger tag)
         {
-            [self titleClicked:tag];
+            [weakSelf titleClicked:tag];
         };
         [_titleScroll addSubview:lab];
     }
     //叠加效果的设置-----初始化
     [self setModesStartValue];
+}
+
+//向self.titleFrames中填充数据
+-(void)fillTitleFrames
+{
+    //计算标题的长度，并设置titleLab的frame
+    CGFloat x = 0.0;
+    for (NSString *title in _titles)
+    {
+        CGRect title_rect = [title boundingRectWithSize:CGSizeMake(MAXFLOAT, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:_title_font} context:nil];
+        CGRect title_rect_N = [(NSValue *)_titleFrames.lastObject CGRectValue];
+        //x += title_rect_N.size.width + item_space;或者
+        x = CGRectGetMaxX(title_rect_N) + _title_space;
+        
+        [_titleFrames addObject:[NSValue valueWithCGRect:CGRectMake(x, 0, title_rect.size.width, _title_scroll_h)]];
+        
+        //记录字体的高度，cover方式需要此参数
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^
+          {
+              _title_h = title_rect.size.height;
+              NSLog(@"字体大小一致，高度只需设置一次即可！");
+          });
+    }
+}
+
+//检查总长度是否小于屏幕宽度，小于的话重设title的frame
+-(void)inspectTotalWidth
+{
+    CGFloat totalWidth = CGRectGetMaxX([(NSValue *)_titleFrames.lastObject CGRectValue]) +_title_space;
+    if (totalWidth < dScreenWidth)
+    {
+        CGFloat addSpace = (dScreenWidth -totalWidth)/(_titles.count +1);
+        _title_space += addSpace;
+        for (int i = 0; i < _titleFrames.count; i++)
+        {
+            CGRect newFrame = [(NSValue *)_titleFrames[i] CGRectValue];
+            newFrame.origin.x += addSpace * (i + 1);
+            [_titleFrames replaceObjectAtIndex:i withObject:[NSValue valueWithCGRect:newFrame]];
+        }
+    }
 }
 
 //叠加效果的设置-----初始化
@@ -520,6 +562,11 @@
 
 -(void)addChildVCs
 {
+    //添加背景视图
+    LoadingView *loading = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, _vcScroll.contentSize.width, _vcScroll.contentSize.height) count:_vcNames.count];
+    [_vcScroll addSubview:loading];
+    
+    //添加内容控制器
     for (int i = 0; i < _vcNames.count; i++)
     {
         //注意：我们childVC模拟网络请求写在了viewDidLoad中，而不是初始化方法中。因此，虽然我们此处初始化了VC，但是由于未将VC添加至父试图，因此不会走VC中的viewDidLoad（viewDidLoad即将显示时调用）

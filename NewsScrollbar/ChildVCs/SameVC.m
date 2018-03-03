@@ -26,5 +26,11 @@
     NSLog(@"%@ --- 开始网络请求！",[self class]);
 }
 
+#pragma mark - deallc
+
+-(void)dealloc
+{
+    NSLog(@"释放了：%@",[self class]);
+}
 
 @end
