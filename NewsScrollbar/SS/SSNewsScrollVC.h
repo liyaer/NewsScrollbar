@@ -50,7 +50,7 @@ effectMode;
  */
 
 //通用参数的设置，包含默认效果的设置，从1，0中任选一种，必须调用！
--(void)setBasicsParameter:(void(^)(NSArray **titles, CGFloat *title_space, UIFont **title_font, UIColor **title_bgColor, UIColor **title_sel_color, UIColor **title_deSel_color, CGFloat *title_scroll_h, UIColor **title_scroll_bgColor, NSArray **vcNames, NSInteger *selectIndex, effectMode *mode)) titlesBlock;
+-(void)setBasicsParameter:(void(^)(CGRect *frame,NSArray **titles, CGFloat *title_space, UIFont **title_font, UIColor **title_bgColor, UIColor **title_sel_color, UIColor **title_deSel_color, CGFloat *title_scroll_h, UIColor **title_scroll_bgColor, NSArray **vcNames, NSInteger *selectIndex, effectMode *mode)) titlesBlock;
 
 //错误的写法，无法达到效果，必须传地址（或者叫引用、reference）才行
 //-(void)setScaleParameter:(void(^)(NSArray *titles)) titlesBlock;

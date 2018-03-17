@@ -21,6 +21,7 @@
 @interface SSNewsScrollVC ()<UIScrollViewDelegate>
 {
     //---------------------通用设置-----------------------
+    CGRect _frame;
     //标题
     NSArray *_titles;//标题数组
     CGFloat _title_space;//间距
@@ -54,6 +55,7 @@
     UIColor *_cover_bgColor;//滑块的颜色
     CGFloat _title_h;//字体的高度
 }
+@property (nonatomic,strong) UIView *baseView;//承载titleScroll和vcScroll
 @property (nonatomic,strong) NSMutableArray *titleFrames;
 @property (nonatomic,strong) UIScrollView *titleScroll;
 @property (nonatomic,assign) NSInteger lastSelBtnTag;
@@ -67,6 +69,15 @@
 @implementation SSNewsScrollVC
 
 #pragma mark - 懒加载
+
+-(UIView *)baseView
+{
+    if (!_baseView)
+    {
+        _baseView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-(self.navigationController ? 64 : 0))];
+    }
+    return _baseView;
+}
 
 -(NSMutableArray *)titleFrames
 {
@@ -115,7 +126,7 @@
 {
     if (!_titleScroll)
     {
-        _titleScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, dScreenWidth, _title_scroll_h)];
+        _titleScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_frame), _title_scroll_h)];
         _titleScroll.backgroundColor = _title_scroll_bgColor;
         _titleScroll.bounces = NO;
         _titleScroll.showsHorizontalScrollIndicator = NO;
@@ -131,7 +142,7 @@
 {
     if (!_vcScroll)
     {
-        _vcScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_titleScroll.frame), CGRectGetWidth(_titleScroll.frame), dScreenHeight -_title_scroll_h -(self.navigationController ? 64 : 0))];
+        _vcScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_titleScroll.frame), CGRectGetWidth(_titleScroll.frame), CGRectGetHeight(_frame) -_title_scroll_h)];
         _vcScroll.contentSize = CGSizeMake(CGRectGetWidth(_vcScroll.frame) * _vcNames.count, _vcScroll.bounds.size.height);
         _vcScroll.showsHorizontalScrollIndicator = NO;
         _vcScroll.pagingEnabled = YES;
@@ -183,7 +194,7 @@
 }
 
 //NSArray ** 是 NSArray *__autoreleasing *的缩写
--(void)setBasicsParameter:(void (^)(NSArray *__autoreleasing *, CGFloat *, UIFont *__autoreleasing *, UIColor *__autoreleasing *, UIColor *__autoreleasing *, UIColor *__autoreleasing *, CGFloat *, UIColor *__autoreleasing *, NSArray *__autoreleasing *, NSInteger *, effectMode *))titlesBlock
+-(void)setBasicsParameter:(void (^)(CGRect *, NSArray *__autoreleasing *, CGFloat *, UIFont *__autoreleasing *, UIColor *__autoreleasing *, UIColor *__autoreleasing *, UIColor *__autoreleasing *, CGFloat *, UIColor *__autoreleasing *, NSArray *__autoreleasing *, NSInteger *, effectMode *))titlesBlock
 {
     if (titlesBlock)
     {
@@ -200,7 +211,7 @@
                 如果是OC对象类型的全局变量，需要传局部变量的引用代替（传全局变量会报错），调用完后将结果转接到全局变量；
                 如果是简单数据类型的全局变量，直接传全局变量的引用即可
          */
-        titlesBlock(&titles,&_title_space,&titleFont,&titleBgColor,&titleSelColor,&titleDeselColor,&_title_scroll_h,&titleScrollBgColor,&vcNames,&_selectIndex,&_mode);
+        titlesBlock(&_frame,&titles,&_title_space,&titleFont,&titleBgColor,&titleSelColor,&titleDeselColor,&_title_scroll_h,&titleScrollBgColor,&vcNames,&_selectIndex,&_mode);
         
         if (titles.count != 0  && vcNames.count != 0 && titles.count == vcNames.count)
         {
@@ -211,6 +222,7 @@
         {
             @throw [NSException exceptionWithName:@"DWL_Error" reason:@"1，标题名称和内容控制器名称为必传参数 2，二者数量上保持一致，并且数量不能为0" userInfo:nil];
         }
+        _frame = [NSStringFromCGRect(_frame) isEqualToString:NSStringFromCGRect(CGRectMake(0, 0, 0, 0))] ? self.baseView.frame : _frame;
         _title_space = _title_space ? : 20;
         _title_font = titleFont ? : [UIFont systemFontOfSize:15.0];
         _title_bgColor = titleBgColor ? : [UIColor clearColor];
@@ -263,8 +275,10 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self.view addSubview:self.titleScroll];
-    [self.view addSubview:self.vcScroll];
+    self.baseView.frame = _frame;
+    [self.view addSubview:self.baseView];
+    [self.baseView addSubview:self.titleScroll];
+    [self.baseView addSubview:self.vcScroll];
     //在懒加载完控件后，显示默认选中的标题和子控制器
     [self scroTitleItemCenter:_selectIndex +100];
     [self.vcScroll setContentOffset:CGPointMake(_selectIndex * CGRectGetWidth(_vcScroll.frame), 0) animated:NO];
@@ -521,7 +535,7 @@
     }
 }
 
-//检查总长度是否小于屏幕宽度，小于的话重设title的frame
+//检查总长度是否小于_titleScroll.frame的宽度，小于的话重设title的frame
 -(void)inspectTotalWidth
 {
     CGFloat totalWidth = CGRectGetMaxX([(NSValue *)_titleFrames.lastObject CGRectValue]) +_title_space;
