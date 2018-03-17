@@ -131,8 +131,8 @@
 {
     if (!_vcScroll)
     {
-        _vcScroll = [[UIScrollView alloc] initWithFrame:CGRectOffset(self.view.bounds, 0, _title_scroll_h)];
-        _vcScroll.contentSize = CGSizeMake(dScreenWidth * _vcNames.count, _vcScroll.bounds.size.height);
+        _vcScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_titleScroll.frame), CGRectGetWidth(_titleScroll.frame), dScreenHeight -_title_scroll_h -(self.navigationController ? 64 : 0))];
+        _vcScroll.contentSize = CGSizeMake(CGRectGetWidth(_vcScroll.frame) * _vcNames.count, _vcScroll.bounds.size.height);
         _vcScroll.showsHorizontalScrollIndicator = NO;
         _vcScroll.pagingEnabled = YES;
         _vcScroll.bounces = NO;
@@ -150,6 +150,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     //取消导航控制器默认的滑动返回（正常返回的话没问题，若中途取消返回会crash，所以禁用）
@@ -266,7 +267,7 @@
     [self.view addSubview:self.vcScroll];
     //在懒加载完控件后，显示默认选中的标题和子控制器
     [self scroTitleItemCenter:_selectIndex +100];
-    [self.vcScroll setContentOffset:CGPointMake(_selectIndex * dScreenWidth, 0) animated:NO];
+    [self.vcScroll setContentOffset:CGPointMake(_selectIndex * CGRectGetWidth(_vcScroll.frame), 0) animated:NO];
     
     //KVO监听，简化代码
     [self addObserver:self forKeyPath:@"lastSelBtnTag" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
@@ -351,7 +352,7 @@
 //滑动结束时会走这里（点击标签触发VC切换不走）
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSInteger currentPage = scrollView.contentOffset.x / dScreenWidth;
+    NSInteger currentPage = scrollView.contentOffset.x / CGRectGetWidth(scrollView.frame);
     
     //更新标识符。这里会存在切换成功和切换失败两种情况，无论那种情况都只需下面一句代码即可。切换成功触发KVO，切换失败不会触发，因为self.lastSelBtnTag前后值未变化
     self.lastSelBtnTag = currentPage +100;
@@ -382,7 +383,7 @@
     [self setModesEndValue:lastSelLab selBtn:selLab];
     
     //更新选中VC。YES：一直回调didscroll，NO：只回调一次
-    [self.vcScroll setContentOffset:CGPointMake((tag -100)*dScreenWidth, 0) animated:NO];
+    [self.vcScroll setContentOffset:CGPointMake((tag -100)*CGRectGetWidth(_vcScroll.frame), 0) animated:NO];
     
     //更新标识符
     self.lastSelBtnTag = tag;
@@ -446,7 +447,7 @@
 -(void)scroTitleItemCenter:(NSInteger)tag
 {
     TitleLab *lab = (TitleLab *)[self.titleScroll viewWithTag:tag];
-    CGFloat offset_x = lab.center.x - dScreenWidth/2;
+    CGFloat offset_x = lab.center.x - CGRectGetWidth(_titleScroll.frame)/2;
     offset_x = offset_x > 0 ? offset_x : 0;
     CGFloat offset_x_max = self.titleScroll.contentSize.width - self.titleScroll.frame.size.width;
     offset_x = offset_x > offset_x_max ? offset_x_max : offset_x;
@@ -460,7 +461,7 @@
     UIViewController *vc = self.childViewControllers[currentPage];
     //添加子控制器View(保证只添加一次)
     if(vc.isViewLoaded)return;
-    vc.view.frame = CGRectOffset(vc.view.bounds, dScreenWidth * currentPage, 0);
+    vc.view.frame = CGRectMake(CGRectGetWidth(_vcScroll.frame) * currentPage, 0, CGRectGetWidth(_vcScroll.frame), CGRectGetHeight(_vcScroll.frame));
     [self.vcScroll addSubview:vc.view];
 }
 
@@ -524,9 +525,9 @@
 -(void)inspectTotalWidth
 {
     CGFloat totalWidth = CGRectGetMaxX([(NSValue *)_titleFrames.lastObject CGRectValue]) +_title_space;
-    if (totalWidth < dScreenWidth)
+    if (totalWidth < CGRectGetWidth(_titleScroll.frame))
     {
-        CGFloat addSpace = (dScreenWidth -totalWidth)/(_titles.count +1);
+        CGFloat addSpace = (CGRectGetWidth(_titleScroll.frame) -totalWidth)/(_titles.count +1);
         _title_space += addSpace;
         for (int i = 0; i < _titleFrames.count; i++)
         {
@@ -576,7 +577,7 @@
     
     //加载默认子控制器
     UIViewController *vc = self.childViewControllers[_selectIndex];
-    vc.view.frame = CGRectOffset(vc.view.bounds, _selectIndex * dScreenWidth, 0);
+    vc.view.frame = CGRectMake(_selectIndex * CGRectGetWidth(_vcScroll.frame), 0, CGRectGetWidth(_vcScroll.frame), CGRectGetHeight(_vcScroll.frame));
     [_vcScroll addSubview:vc.view];
 }
 

@@ -42,6 +42,7 @@
 //    SSNewsScrollVC *vc = [[SSNewsScrollVC alloc] init];
 //    [vc setScaleModeParameter:^(NSArray *__autoreleasing *titles)
 //     {
+//老的初始化方法，使用时换成最新的setBasicsParameter即可（这里懒得换了）
 //         *titles = @[@"军事",@"科技范",@"哈哈第三方士大夫",@"OK",@"嘻嘻"];
 //     }];
 
@@ -49,9 +50,12 @@
     ScaleModeVC *vc = [[ScaleModeVC alloc] init];
 //    [vc setScaleModeParameter:^(NSArray *__autoreleasing *titles)
 //     {
+//老的初始化方法，使用时换成最新的setBasicsParameter即可（这里懒得换了）
 //         *titles = @[@"军事",@"科技范",@"哈哈第三方士大夫",@"OK",@"嘻嘻"];
 //     }];
+    //测试有无Nav两种情况下frame的适配问题。测试结果正常！
     [self.navigationController pushViewController:vc animated:YES];
+//    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 
