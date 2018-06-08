@@ -9,7 +9,7 @@
 #import "SSNewsScrollVC.h"
 #import "MacroDefinition.h"
 #import "UIColor+RGB.h"
-#import "TitleLab.h"
+#import "SSTitleLab.h"
 #import "LoadingView.h"
 
 
@@ -43,7 +43,7 @@
     //默认的颜色渐变效果
     effectMode _mode;
 
-    //--------------------各种效果的参数设置----------------
+    //--------------------可选效果的参数设置----------------
     //缩放效果
     BOOL _isScale;
     CGFloat _scale;//放大效果的放大倍数
@@ -58,9 +58,9 @@
 @property (nonatomic,strong) UIView *baseView;//承载titleScroll和vcScroll
 @property (nonatomic,strong) NSMutableArray *titleFrames;
 @property (nonatomic,strong) UIScrollView *titleScroll;
-@property (nonatomic,assign) NSInteger lastSelBtnTag;
 @property (nonatomic,strong) UIView *underLine;
 @property (nonatomic,strong) UIView *coverView;
+@property (nonatomic,assign) NSInteger lastSelBtnTag;
 @property (nonatomic,strong) UIScrollView *vcScroll;
 
 @end
@@ -74,7 +74,8 @@
 {
     if (!_baseView)
     {
-        _baseView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-(self.navigationController ? 64 : 0))];
+        //默认值不好适配，需要考虑nav和tabBar,并且是否透明和隐藏都会影响frame，所以干脆在外面根据具体页面进行指定（即需要设置frame参数）
+        _baseView = [[UIView alloc] initWithFrame:self.view.bounds];
     }
     return _baseView;
 }
@@ -148,6 +149,7 @@
         _vcScroll.pagingEnabled = YES;
         _vcScroll.bounces = NO;
         _vcScroll.delegate = self;
+        //添加子控制器
         [self addChildVCs];
     }
     return _vcScroll;
@@ -206,6 +208,7 @@
         NSArray *vcNames;
         UIColor *titleScrollBgColor;
         
+        
         /*
             总结发现：
                 如果是OC对象类型的全局变量，需要传局部变量的引用代替（传全局变量会报错），调用完后将结果转接到全局变量；
@@ -237,6 +240,10 @@
         _mode = _mode ? : titleColorSlideGradientMode;
         [self setAnimationGradientColor];
     }
+    else
+    {
+        @throw [NSException exceptionWithName:@"DWL_Error" reason:@"若想使用本框架，外界请勿对block传nil" userInfo:nil];
+    }
 }
 
 //错误的写法，无法达到效果，必须传地址（或者叫引用、reference）才行
@@ -264,16 +271,20 @@
             _underLine_h = [(NSNumber *)parameter floatValue] ? : 1.0;
         }
             break;
-        default:
+        case coverMode:
         {
             _isCover = YES;
             _cover_bgColor = (UIColor *)parameter ? : [UIColor grayColor];
         }
             break;
+        default:
+            break;
     }
+    [self calledAfterSetBasicsParameter];
 }
 
--(void)viewWillAppear:(BOOL)animated
+//初始化参数设置完毕后，调用
+-(void)calledAfterSetBasicsParameter
 {
     self.baseView.frame = _frame;
     [self.view addSubview:self.baseView];
@@ -293,7 +304,7 @@
 #pragma mark - scrollView delegate
 
 //叠加效果的设置-----动画过程中
--(void)setAnimation:(TitleLab *)leftLab rightLab:(TitleLab *)rightLab leftScale:(CGFloat)leftScale rightScale:(CGFloat)rightScale
+-(void)setAnimation:(SSTitleLab *)leftLab rightLab:(SSTitleLab *)rightLab leftScale:(CGFloat)leftScale rightScale:(CGFloat)rightScale
 {
     //缩放效果
     if (_isScale && !_isUnderLine && !_isCover)
@@ -331,8 +342,8 @@
         //这里我们不区分方向（向左还是向右滑动），用相对方位左和右来进行操作
         NSInteger leftLabTag = offset_x / CGRectGetWidth(scrollView.bounds);
         NSInteger rightLabTag = leftLabTag +1;
-        TitleLab *leftLab = (TitleLab *)[self.titleScroll viewWithTag:leftLabTag +100];
-        TitleLab *rightLab = (TitleLab *)[self.titleScroll viewWithTag:rightLabTag +100];
+        SSTitleLab *leftLab = (SSTitleLab *)[self.titleScroll viewWithTag:leftLabTag +100];
+        SSTitleLab *rightLab = (SSTitleLab *)[self.titleScroll viewWithTag:rightLabTag +100];
         
         //向左滑动：scale逐渐变小 ；向右滑动：scale逐渐变大。这一点可以保证我们下面的操作就算不区分方向也可以完成想要的效果
         CGFloat scale = offset_x /CGRectGetWidth(scrollView.bounds)  -leftLabTag;
@@ -380,9 +391,9 @@
 -(void)titleClicked:(NSInteger)tag
 {
     //默认效果的设置-----动画结束时
-    TitleLab *lastSelLab = (TitleLab *)[self.titleScroll viewWithTag:self.lastSelBtnTag];
+    SSTitleLab *lastSelLab = (SSTitleLab *)[self.titleScroll viewWithTag:self.lastSelBtnTag];
     lastSelLab.textColor = _title_deSel_color;
-    TitleLab *selLab = (TitleLab *)[self.titleScroll viewWithTag:tag];
+    SSTitleLab *selLab = (SSTitleLab *)[self.titleScroll viewWithTag:tag];
     selLab.textColor = _title_sel_color;
     //在titleColorSlideGradientMode模式下，如果之前进行过滑动切换，消除动画带来的影响
     if (_mode == titleColorSlideGradientMode)
@@ -404,7 +415,7 @@
 }
 
 //叠加效果的设置-----动画结束时
--(void)setModesEndValue:(TitleLab *)lastSelLab selBtn:(TitleLab *)selLab
+-(void)setModesEndValue:(SSTitleLab *)lastSelLab selBtn:(SSTitleLab *)selLab
 {
     //缩放
     if (_isScale && !_isUnderLine && !_isCover)
@@ -460,7 +471,7 @@
 //选中的标签居中显示（两侧边界标签除外）
 -(void)scroTitleItemCenter:(NSInteger)tag
 {
-    TitleLab *lab = (TitleLab *)[self.titleScroll viewWithTag:tag];
+    SSTitleLab *lab = (SSTitleLab *)[self.titleScroll viewWithTag:tag];
     CGFloat offset_x = lab.center.x - CGRectGetWidth(_titleScroll.frame)/2;
     offset_x = offset_x > 0 ? offset_x : 0;
     CGFloat offset_x_max = self.titleScroll.contentSize.width - self.titleScroll.frame.size.width;
@@ -484,33 +495,6 @@
 
 #pragma mark - 封装调用集合
 
--(void)addTitleLabs
-{
-    __weak typeof(self) weakSelf = self;
-
-    for (int i = 0; i < _titles.count; i++)
-    {
-        TitleLab *lab = [[TitleLab alloc] initWithFrame:[(NSValue *)self.titleFrames[i] CGRectValue]];
-        lab.backgroundColor = _title_bgColor;
-        lab.text = _titles[i];
-        lab.font = _title_font;
-        lab.textColor = _title_deSel_color;
-        lab.tag = i +100;
-        if (i == _selectIndex)
-        {
-            lab.textColor = _title_sel_color;
-            self.lastSelBtnTag = lab.tag;
-        }
-        lab.titleClick = ^(NSInteger tag)
-        {
-            [weakSelf titleClicked:tag];
-        };
-        [_titleScroll addSubview:lab];
-    }
-    //叠加效果的设置-----初始化
-    [self setModesStartValue];
-}
-
 //向self.titleFrames中填充数据
 -(void)fillTitleFrames
 {
@@ -518,20 +502,21 @@
     CGFloat x = 0.0;
     for (NSString *title in _titles)
     {
+        //文字的rect
         CGRect title_rect = [title boundingRectWithSize:CGSizeMake(MAXFLOAT, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:_title_font} context:nil];
+        //取出最后一个label的frame，取出x值用于计算本次循环中label的x值
         CGRect title_rect_N = [(NSValue *)_titleFrames.lastObject CGRectValue];
-        //x += title_rect_N.size.width + item_space;或者
         x = CGRectGetMaxX(title_rect_N) + _title_space;
-        
+        //将本次循环中的label.frame添加进数组
         [_titleFrames addObject:[NSValue valueWithCGRect:CGRectMake(x, 0, title_rect.size.width, _title_scroll_h)]];
         
         //记录字体的高度，cover方式需要此参数
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^
-          {
-              _title_h = title_rect.size.height;
-              NSLog(@"字体大小一致，高度只需设置一次即可！");
-          });
+                      {
+                          _title_h = title_rect.size.height;
+                          NSLog(@"记录字体的高度，cover方式需要此参数。字体大小一致，高度只需设置一次即可！");
+                      });
     }
 }
 
@@ -552,13 +537,42 @@
     }
 }
 
+-(void)addTitleLabs
+{
+    __weak typeof(self) weakSelf = self;
+
+    //添加子视图
+    for (int i = 0; i < _titles.count; i++)
+    {
+        SSTitleLab *lab = [[SSTitleLab alloc] initWithFrame:[(NSValue *)self.titleFrames[i] CGRectValue]];
+        lab.backgroundColor = _title_bgColor;
+        lab.text = _titles[i];
+        lab.font = _title_font;
+        lab.textColor = _title_deSel_color;
+        lab.tag = i +100;
+        if (i == _selectIndex)
+        {
+            lab.textColor = _title_sel_color;
+            self.lastSelBtnTag = lab.tag;
+        }
+        lab.titleClick = ^(NSInteger tag)
+        {
+            [weakSelf titleClicked:tag];
+        };
+        [_titleScroll addSubview:lab];
+    }
+    
+    //叠加效果的设置-----初始化
+    [self setModesStartValue];
+}
+
 //叠加效果的设置-----初始化
 -(void)setModesStartValue
 {
     //缩放
     if (_isScale && !_isUnderLine && !_isCover)
     {
-        TitleLab *lab = (TitleLab *)[_titleScroll viewWithTag:_selectIndex +100];
+        SSTitleLab *lab = (SSTitleLab *)[_titleScroll viewWithTag:_selectIndex +100];
         lab.transform = CGAffineTransformMakeScale(_scale, _scale);
     }
     
@@ -589,7 +603,7 @@
         [self addChildViewController:vc];
     }
     
-    //加载默认子控制器
+    //加载默认显示的子控制器
     UIViewController *vc = self.childViewControllers[_selectIndex];
     vc.view.frame = CGRectMake(_selectIndex * CGRectGetWidth(_vcScroll.frame), 0, CGRectGetWidth(_vcScroll.frame), CGRectGetHeight(_vcScroll.frame));
     [_vcScroll addSubview:vc.view];

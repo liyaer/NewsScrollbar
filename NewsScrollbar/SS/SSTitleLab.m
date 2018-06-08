@@ -6,9 +6,9 @@
 //  Copyright © 2018年 杜文亮. All rights reserved.
 //
 
-#import "TitleLab.h"
+#import "SSTitleLab.h"
 
-@implementation TitleLab
+@implementation SSTitleLab
 
 - (void)drawRect:(CGRect)rect
 {
@@ -26,7 +26,6 @@
     {
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleClickAction:)];
         [self addGestureRecognizer:tap];
-        
         self.userInteractionEnabled = YES;
         self.textAlignment = NSTextAlignmentCenter;
     }
@@ -45,7 +44,7 @@
 {
     _progress = progress;
     
-    [self setNeedsDisplay];
+    [self setNeedsDisplay];//会立即调用drawRect方法，进行绘制
 }
 
 @end

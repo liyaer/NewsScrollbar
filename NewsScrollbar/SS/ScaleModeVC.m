@@ -31,6 +31,7 @@
          *title_sel_color = [UIColor orangeColor];
          *mode = titleColorGradientMode;
      }];
+    [self setOtherMode:999 parameter:nil];
 //    [self setOtherMode:scaleMode parameter:nil];
 //    [self setOtherMode:underLineMode parameter:@(2.0)];
 //    [self setOtherMode:coverMode parameter:[UIColor yellowColor]];

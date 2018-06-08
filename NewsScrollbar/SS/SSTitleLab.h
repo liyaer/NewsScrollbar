@@ -10,7 +10,7 @@
 
 typedef void(^titleClickBlcok)(NSInteger tag);
 
-@interface TitleLab : UILabel
+@interface SSTitleLab : UILabel
 
 @property (nonatomic,copy) titleClickBlcok titleClick;
 
