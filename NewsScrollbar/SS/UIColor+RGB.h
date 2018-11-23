@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/*
+ *   得到颜色RGB值
+ */
 @interface UIColor (RGB)
 
 //可以是RGB创建的颜色，也可以是[UIColor blackColor]这种创建的颜色

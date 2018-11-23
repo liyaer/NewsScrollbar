@@ -10,4 +10,6 @@
 
 @interface SameVC : UIViewController
 
+@property (nonatomic,strong) NSString *classId;
+
 @end

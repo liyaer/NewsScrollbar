@@ -24,6 +24,11 @@
     self.view.backgroundColor = DRandomColor;
     
     NSLog(@"%@ --- 开始网络请求！",[self class]);
+    
+    if (self.classId)
+    {
+        NSLog(@"子VC用同一个，通过classId:%@区分",self.classId);
+    }
 }
 
 #pragma mark - deallc

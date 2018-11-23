@@ -38,7 +38,7 @@
 
 - (IBAction)ShowSSVC:(id)sender
 {
-    //用法一：直接使用该类初始化（必须立即调用初始化方法）
+    //用法一：直接使用该类初始化，立即调用封装方法
 //    SSNewsScrollVC *vc = [[SSNewsScrollVC alloc] init];
 //    [vc setScaleModeParameter:^(NSArray *__autoreleasing *titles)
 //     {
@@ -46,13 +46,17 @@
 //         *titles = @[@"军事",@"科技范",@"哈哈第三方士大夫",@"OK",@"嘻嘻"];
 //     }];
 
-    //用法二：使用该类的子类（可以立即调用，也可以在子类的ViewDidLoad中调初始化方法）
-    ScaleModeVC *vc = [[ScaleModeVC alloc] init];
+    //用法二：使用该类的子类，立即调用封装方法
+//    ScaleModeVC *vc = [[ScaleModeVC alloc] init];
 //    [vc setScaleModeParameter:^(NSArray *__autoreleasing *titles)
 //     {
 //老的初始化方法，使用时换成最新的setBasicsParameter即可（这里懒得换了）
 //         *titles = @[@"军事",@"科技范",@"哈哈第三方士大夫",@"OK",@"嘻嘻"];
 //     }];
+    
+    //用法三：使用该类的子类，在子类的ViewDidLoad中调用封装方法
+    ScaleModeVC *vc = [[ScaleModeVC alloc] init];
+    
     //测试有无Nav两种情况下frame的适配问题。测试结果正常！
     [self.navigationController pushViewController:vc animated:YES];
 //    [self.navigationController presentViewController:vc animated:YES completion:nil];

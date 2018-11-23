@@ -10,7 +10,7 @@
 #import "MacroDefinition.h"
 #import "UIColor+RGB.h"
 #import "SSTitleLab.h"
-#import "LoadingView.h"
+#import "SSLoadingView.h"
 
 
 //cover效果时扩宽尺寸需要
@@ -158,20 +158,7 @@
 
 
 
-#pragma mark - viewDidLoad
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    //取消导航控制器默认的滑动返回（正常返回的话没问题，若中途取消返回会crash，所以禁用）
-    if (self.navigationController)
-    {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    }
-}
+#pragma mark - 在viewDidLoad之前，必须调用（setBasicsParameter）和可选调用（setOtherMode）的两个方法
 
 -(void)setAnimationGradientColor
 {
@@ -214,7 +201,7 @@
                 如果是OC对象类型的全局变量，需要传局部变量的引用代替（传全局变量会报错），调用完后将结果转接到全局变量；
                 如果是简单数据类型的全局变量，直接传全局变量的引用即可
          */
-        titlesBlock(&_frame,&titles,&_title_space,&titleFont,&titleBgColor,&titleSelColor,&titleDeselColor,&_title_scroll_h,&titleScrollBgColor,&vcNames,&_selectIndex,&_mode);
+    titlesBlock(&_frame,&titles,&_title_space,&titleFont,&titleBgColor,&titleSelColor,&titleDeselColor,&_title_scroll_h,&titleScrollBgColor,&vcNames,&_selectIndex,&_mode);
         
         if (titles.count != 0  && vcNames.count != 0 && titles.count == vcNames.count)
         {
@@ -280,6 +267,22 @@
         default:
             break;
     }
+}
+
+#pragma mark - viewDidLoad
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    //若存在Nav，就取消Nav默认的滑动返回（正常返回的话没问题，若中途取消返回会crash，所以禁用）
+    if (self.navigationController)
+    {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+    
     [self calledAfterSetBasicsParameter];
 }
 
@@ -513,10 +516,10 @@
         //记录字体的高度，cover方式需要此参数
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^
-                      {
-                          _title_h = title_rect.size.height;
-                          NSLog(@"记录字体的高度，cover方式需要此参数。字体大小一致，高度只需设置一次即可！");
-                      });
+          {
+              _title_h = title_rect.size.height;
+              NSLog(@"记录字体的高度，cover方式需要此参数。字体大小一致，高度只需设置一次即可！");
+          });
     }
 }
 
@@ -592,15 +595,22 @@
 -(void)addChildVCs
 {
     //添加背景视图
-    LoadingView *loading = [[LoadingView alloc] initWithFrame:CGRectMake(0, 0, _vcScroll.contentSize.width, _vcScroll.contentSize.height) count:_vcNames.count];
+    SSLoadingView *loading = [[SSLoadingView alloc] initWithFrame:CGRectMake(0, 0, _vcScroll.contentSize.width, _vcScroll.contentSize.height) count:_vcNames.count];
     [_vcScroll addSubview:loading];
     
     //添加内容控制器
     for (int i = 0; i < _vcNames.count; i++)
     {
         //注意：我们childVC模拟网络请求写在了viewDidLoad中，而不是初始化方法中。因此，虽然我们此处初始化了VC，但是由于未将VC添加至父试图，因此不会走VC中的viewDidLoad（viewDidLoad即将显示时调用）
-        UIViewController *vc = [NSClassFromString(_vcNames[i]) new];
-        [self addChildViewController:vc];
+        if ([_vcNames[i] isKindOfClass:[NSString class]])
+        {
+            UIViewController *vc = [NSClassFromString(_vcNames[i]) new];
+            [self addChildViewController:vc];
+        }
+        else
+        {
+            [self addChildViewController:_vcNames[i]];
+        }
     }
     
     //加载默认显示的子控制器

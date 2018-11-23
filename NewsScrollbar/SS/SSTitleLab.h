@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
 typedef void(^titleClickBlcok)(NSInteger tag);
+
 
 @interface SSTitleLab : UILabel
 

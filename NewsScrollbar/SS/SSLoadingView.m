@@ -6,9 +6,9 @@
 //  Copyright © 2018年 杜文亮. All rights reserved.
 //
 
-#import "LoadingView.h"
+#import "SSLoadingView.h"
 
-@implementation LoadingView
+@implementation SSLoadingView
 
 -(instancetype)initWithFrame:(CGRect)frame count:(NSInteger)count
 {

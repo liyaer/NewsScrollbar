@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoadingView : UIView
+@interface SSLoadingView : UIView
 
 -(instancetype)initWithFrame:(CGRect)frame count:(NSInteger)count;
 
